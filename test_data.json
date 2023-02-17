@@ -1,1 +1,7 @@
-{ "title": "Dead Cells", "launch_date": "2018/08/6", "summary": "Dead Cells is a rogue-lite, Castlevania-inspired action-platformer, allowing you to explore a sprawling, ever-changing castle… assuming you’re able to fight your way past its keepers.", "pegi_rate": "16", "duration": "14" }
+{
+  "title": "DeadCells",
+  "launch_date": "2018/08/6",
+  "summary": "Dead Cells is a rogue-lite, Castlevania-inspired action-platformer, allowing you to explore a sprawling, ever-changing castle… assuming you’re able to fight your way past its keepers.",
+  "pegi_rate": "16",
+  "duration": "14"
+}

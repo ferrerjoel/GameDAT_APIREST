@@ -4,7 +4,7 @@ const routes = require("./routes")
 
 // Connect to MongoDB database
 mongoose
-	.connect("mongodb://localhost:27017/GameDAT", { useNewUrlParser: true })
+	.connect("mongodb://127.0.0.1:27017/GameDAT", { useNewUrlParser: true })
 	.then(() => {
 		const app = express()
 		app.use(express.json())

@@ -1,5 +1,5 @@
 // Simplified version of the name
-db.collection.updateMany({}, [
+db.games.updateMany({}, [
   {
     $set: {
       name_simplified: {

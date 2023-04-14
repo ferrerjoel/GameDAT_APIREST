@@ -17,7 +17,7 @@ router.post("/games", async (req, res) => {
 
 // GET
 router.get("/games/:title", async (req, res) => {
-  const post = await Post.findOne({ name_simplified: req.params.title.replace(/\s+/g, '').toLowerCase()});
+  const post = await Post.findOne({ name_simplified: { $regex: new RegExp(req.params.title.replace(/\s+/g, '').toLowerCase() + '.*') }});
   console.log(`Game requested: ${req.params.title.replace(/\s+/g, '').toLowerCase()}`)
   if (post != null) {
     res.send(post);

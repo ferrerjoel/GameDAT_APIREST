@@ -1,0 +1,14 @@
+// Simplified version of the name
+db.collection.updateMany({}, [
+  {
+    $set: {
+      name_simplified: {
+        $replaceAll: {
+          input: { $toLower: "$name" },
+          find: " ",
+          replacement: ""
+        }
+      }
+    }
+  }
+])

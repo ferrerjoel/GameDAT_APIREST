@@ -17,7 +17,8 @@ router.post("/games", async (req, res) => {
 
 // GET
 router.get("/games/:title", async (req, res) => {
-  const post = await Post.findOne({ title: req.params.title });
+  const post = await Post.findOne({ name: { $regex : new RegExp(req.params.title.trim(), "i") }});
+  console.log(`Game requested: ${req.params.title}`)
   if (post != null) {
     res.send(post);
   } else {

@@ -13,6 +13,7 @@ const corsOptions ={
 mongoose
 	.connect("mongodb://127.0.0.1:27017/GameDAT", { useNewUrlParser: true })
 	.then(() => {
+		mongoose.set('strictQuery', false); // TODO: Returns the first document on the DB if we don't disable strictQuery, remove this in Mongoose7
 		const app = express()
 		app.use(express.json())
 		app.use(cors(corsOptions)) // Use this after the variable declaration

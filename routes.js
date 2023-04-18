@@ -15,17 +15,25 @@ router.post("/games", async (req, res) => {
   res.send(post);
 });
 
-// GET
+// GET game
 router.get("/games/:title", async (req, res) => {
-  const post = await Post.findOne({ name_simplified: { $regex: new RegExp(req.params.title.replace(/\s+/g, '').toLowerCase() + '.*') }});
-  console.log(`Game requested: ${req.params.title.replace(/\s+/g, '').toLowerCase()}`)
+  const post = await Post.findOne({ name: req.params.title });
+  console.log(`Game requested: ${req.params.title}`);
   if (post != null) {
     res.send(post);
   } else {
-    res.status(404);
-    res.send({ error: "Post doesn't exist!" });
+    const title = req.params.title.replace(/\s+/g, '').toLowerCase();
+    const regex = new RegExp(title + '.*', 'i');
+    const partialMatch = await Post.findOne({ name_simplified: { $regex: regex }});
+    if (partialMatch != null) {
+      res.send(partialMatch);
+    } else {
+      res.status(404);
+      res.send({ error: "Post doesn't exist!" });
+    }
   }
 });
+
 
 // GET all game titles
 router.get("/games", async (req, res) => {

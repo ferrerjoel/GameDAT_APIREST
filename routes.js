@@ -27,6 +27,18 @@ router.get("/games/:title", async (req, res) => {
   }
 });
 
+// GET all game titles
+router.get("/games", async (req, res) => {
+  const titles = await Post.find({}, { _id: 0, name: 1 });
+  if (titles.length > 0) {
+    res.send(titles);
+  } else {
+    res.status(404);
+    res.send({ error: "No game titles found!" });
+  }
+});
+
+
 // PATCH
 router.patch("/games/:title", async (req, res) => {
   const post = await Post.findOne({ title: req.params.title });
